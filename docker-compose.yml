@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  main-service:
+    image: bobur200011/main-service
+    ports:
+      - "8088:8088"
+    environment:
+      - CODE_GENERATOR_SERVICE_URL=http://code-service:8081/codes
+    depends_on:
+      - code-service
+  code-service:
+    image: bobur200011/code-service
+    ports:
+      - "8081:8081"
